@@ -1,0 +1,134 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>edu.fatec.sjc</groupId>
+	<artifactId>jh-sample</artifactId>
+	<packaging>war</packaging>
+	<version>1.0</version>
+
+	<name>jh-sample Maven Webapp</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<jdk.version>1.7</jdk.version>
+		<junit.version>4.12</junit.version>
+		<mockito.version>1.9.5</mockito.version>
+		<sqlite.version>3.8.11.2</sqlite.version>
+		<lombok.version>1.16.10</lombok.version>
+		<hibernate-core-version>5.1.0.Final</hibernate-core-version>
+		<mysql.jdbc.version>6.0.4</mysql.jdbc.version>
+		<!-- Liquidbase properties -->
+		<liquibase.driver>org.sqlite.JDBC</liquibase.driver>
+		<liquibase.url>jdbc:sqlite:jh-sample.db</liquibase.url>
+		<liquibase.username></liquibase.username>
+		<liquibase.password></liquibase.password>
+		<liquibase.verbose>true</liquibase.verbose>
+		<liquibase.dropFirst>true</liquibase.dropFirst>
+		<liquibase.skip>false</liquibase.skip>
+		<liquibase.contexts>default</liquibase.contexts>
+		<liquibase.promptOnNonLocalDatabase>false</liquibase.promptOnNonLocalDatabase>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.xerial</groupId>
+			<artifactId>sqlite-jdbc</artifactId>
+			<version>${sqlite.version}</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.jdbc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>${lombok.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate-core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate-core-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.enigmabridge</groupId>
+			<artifactId>hibernate4-sqlite-dialect</artifactId>
+			<version>0.1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+	</dependencies>
+
+
+	<build>
+		<finalName>jh-sample</finalName>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+
+		<testResources>
+			<testResource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</testResource>
+		</testResources>
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+					<source>${jdk.version}</source>
+					<target>${jdk.version}</target>
+					<showDeprecation>true</showDeprecation>
+					<showWarnings>true</showWarnings>
+					<optimize>true</optimize>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.liquibase</groupId>
+				<artifactId>liquibase-maven-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<changeLogFile>src/main/resources/db-scripts/db.master.xml</changeLogFile>
+					<verbose>${liquibase.verbose}</verbose>
+					<dropFirst>${liquibase.dropFirst}</dropFirst>
+					<contexts>${liquibase.contexts}</contexts>
+					<promptOnNonLocalDatabase>${liquibase.promptOnNonLocalDatabase}</promptOnNonLocalDatabase>
+					<driver>${liquibase.driver}</driver>
+					<databaseChangeLogTableName>ACC_DATABASECHANGELOG</databaseChangeLogTableName>
+					<databaseChangeLogLockTableName>ACC_DATABASECHANGELOGLOCK</databaseChangeLogLockTableName>
+					<skip>${liquibase.skip}</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>
