@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+	<preConditions>
+		<dbms type="mysql" />
+	</preConditions>
+
+	<include file="src/main/resources/db-scripts/scripts/caixa.sql" />
+	<include file="src/main/resources/db-scripts/scripts/categoriaprodutos.sql" />
+	<include file="src/main/resources/db-scripts/scripts/cliente.sql" />
+	<include file="src/main/resources/db-scripts/scripts/estoque.sql" />
+	<include file="src/main/resources/db-scripts/scripts/fornecedores.sql" />
+	<include file="src/main/resources/db-scripts/scripts/funcionario.sql" />
+	<include file="src/main/resources/db-scripts/scripts/produtos.sql" />
+	<include file="src/main/resources/db-scripts/scripts/username.sql" />
+	<include file="src/main/resources/db-scripts/scripts/venda.sql" />
+</databaseChangeLog>
