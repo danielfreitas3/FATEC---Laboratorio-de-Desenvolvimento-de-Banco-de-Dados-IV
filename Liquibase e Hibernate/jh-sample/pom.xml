@@ -16,7 +16,7 @@
 		<sqlite.version>3.8.11.2</sqlite.version>
 		<lombok.version>1.16.10</lombok.version>
 		<hibernate-core-version>5.1.0.Final</hibernate-core-version>
-		<mysql.jdbc.version>6.0.4</mysql.jdbc.version>
+		<mysql.jdbc.version>8.0.16</mysql.jdbc.version>
 		<!-- Liquidbase properties -->
 		<liquibase.driver>org.sqlite.JDBC</liquibase.driver>
 		<liquibase.url>jdbc:sqlite:jh-sample.db</liquibase.url>
